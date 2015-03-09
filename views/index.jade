@@ -1,26 +1,36 @@
 extends layout
 
 block content
-  #fullpage
-    .section#section0
-      #heart
-    .section#section1
-      p 我们已经一起走过了
-        br
-        span
-    .section#section2
-      - var meetings = 18;
-      - for(var i = 0; i < meetings; i++) {
-          .slide(id='slide#{i}')
-            #mapContainer
-      - }
-    .section#section3
-    .section#section4
-      div.ds-thread(data-thread-key='comment', data-title='留言板', data-url='http://iloverollo.com')
-      footer
-        | &copy; 2015 
-        | Designed by 
-        a(href='http://www.hantq.com') hantq
+  #perspective.perspective.effect-airbnb
+    .container
+      .wrapper
+        button#showMenu 导航
+        #fullpage
+          .section#section0
+            #heart
+          .section#section1
+            p 我们已经一起走过了
+              br
+              span
+          .section#section2
+            - var meetings = 18;
+            - for(var i = 0; i < meetings; i++) {
+                .slide(id='slide#{i}')
+                  #mapContainer
+            - }
+          .section#section3
+          .section#section4
+            div.ds-thread(data-thread-key='comment', data-title='留言板', data-url='http://iloverollo.com')
+            footer
+              | &copy; 2015 
+              | Designed by 
+              a(href='http://www.hantq.com') hantq
+    nav.outer-nav.left.vertical
+      a.icon-home(href='#') 仿佛见到你时跳动的心
+      a.icon-news(href='#') 我们共同走过的时间
+      a.icon-image(href='#') 我们一起去过的地方
+      a.icon-star(href='#') 我们留下的那些回忆
+      a.icon-mail(href='#') 来给我们留言吧
   // if IE
     script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
   script(src="/bower_components/jquery/dist/jquery.min.js")
@@ -44,4 +54,6 @@ block content
   script(src="/javascripts/tween.min.js")
   script(src="/javascripts/Sparks.js")
   script(src="/javascripts/helvetiker_regular.typeface.js")
+  script(src="/javascripts/classie.js")
+  script(src="/javascripts/menu.js")
   script(src="/javascripts/main.js")
