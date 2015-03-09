@@ -1,0 +1,59 @@
+@import "compass";
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/hacks";
+
+// common style begin
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #555;
+	text-decoration: none;
+}
+// common style end
+
+
+// section1 timer style begin
+#section1 p {
+  color: #fff;
+  font-size: 5em;
+  min-width: 300px;
+  text-align: center;
+}
+// section1 timer style end
+
+
+// section2 map style begin
+.slide {
+  #mapContainer {
+    width: 90%;
+    height: -webkit-calc(100% - 5em);
+    height: -moz-calc(100% - 5em);
+    height: calc(100% - 5em);
+    margin: 20px auto;
+  }
+}
+// section2 map style end
+
+
+// section3 photo style begin
+
+// section3 photo style end
+
+
+// section4 comment style begin
+footer {
+  background: #333;
+  color: #f2f2f2;
+  display: block;
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+}
+// section4 comment style end
