@@ -19,19 +19,22 @@ block content
       div.ds-thread(data-thread-key='comment', data-title='留言板', data-url='http://iloverollo.com')
       footer
         | &copy; 2015 
+        | Designed by 
         a(href='http://www.hantq.com') hantq
   // if IE
     script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js")
   script(src="/bower_components/jquery/dist/jquery.min.js")
   script(src="/bower_components/fullpage.js/vendors/jquery.easings.min.js")
+  script(src="/bower_components/fullpage.js/vendors/jquery.slimscroll.min.js")
   script(src="/bower_components/fullpage.js/jquery.fullPage.min.js")
   script(src="/bower_components/underscore/underscore-min.js")
   script.
     var duoshuoQuery = {short_name: 'iloverollo'};
     $(function() {
       $('#fullpage').fullpage({
-        sectionsColor: ['#eae1c0', '#4bbfc3', '#8fb98b', '#de564b', '#2f3238'],
-        css3: true
+        sectionsColor: ['#eae1c0', '#4bbfc3', '#8fb98b', '#de564b', '#e5e6d0'],
+        css3: true,
+        scrollOverflow: true
       });
     });
   script(src="http://webapi.amap.com/maps?v=1.3&key=ae7a89e6ca3c29222de25e0f510b34eb")
