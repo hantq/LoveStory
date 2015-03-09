@@ -90,3 +90,6 @@ footer {
   line-height: 40px;
   text-align: center;
 }
+footer a:hover {
+  color: #66b2ff;
+}
