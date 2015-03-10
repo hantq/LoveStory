@@ -12,8 +12,10 @@ block content
       - var meetings = 18;
       - for(var i = 0; i < meetings; i++) {
           .slide(id='slide#{i}')
+            h1.date
             #mapContainer
-              h1 Slider#{i}
+              h2 Slider#{i}
+            p.description
       - }
     .section#section3
     .section#section4
@@ -37,9 +39,11 @@ block content
         css3: true,
         scrollOverflow: true,
         navigation: true,
-        navigationPosition: 'right',
         navigationTooltips: ['正如初次见到你那样的心跳', '我们共同走过的时间',
-          '我们一起去过的地方', '我们留下的那些回忆', '来给我们留言吧']
+          '我们一起去过的地方', '我们留下的那些回忆', '来给我们留言吧'],
+        slidesNavigation: true,
+        slidesNavTooltips: ['2014/11/16', '2014/12/07', '2014/12/14', '4', '5', '6', '7', '8', '9',
+          '10', '11', '12', '13', '14', '15', '16', '17', '18']
       });
     });
   //- script(src="http://webapi.amap.com/maps?v=1.3&key=ae7a89e6ca3c29222de25e0f510b34eb")
