@@ -65,6 +65,9 @@ body {
   text-align: center;
 }
 
+.slide .date {
+  font-size: 4em;
+}
 .slide #mapContainer {
   width: 60%;
   min-width: 300px;
