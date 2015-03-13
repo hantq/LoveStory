@@ -2,7 +2,5 @@
 *.log
 
 /node_modules/
-/bower_components/
-/dist/
 /public/stylesheets/style.css
 /public/.sass-cache/
