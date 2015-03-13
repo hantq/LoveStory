@@ -214,7 +214,9 @@ $(function() {
   }
 
   // map
-  var md = mapData.map,
+  var marker,
+      lineArr,
+      md = mapData.map,
       mdLen = md.length;
 
   for(var j = 0; j < mdLen; j++) {
@@ -222,53 +224,69 @@ $(function() {
   }
 
   function drawMap(data, index) {
+
+    var slider = '#slide' + index;
+    $(slider + " h1").html(data.date);
+
     var dataS = data.path;
     var dest = "mapContainer" + index;
 
-    //初始化地图对象，加载地图
     var map = new AMap.Map(dest, {
       resizeEnable: true,
-      //二维地图显示视口
       view: new AMap.View2D({
-        //地图中心点
         center: new AMap.LngLat(dataS[0].lng, dataS[0].lat),
-        //地图显示的缩放级别
         zoom: 17
       }),
       continuousZoomEnable: false
     });
     AMap.event.addListener(map, "complete", completeEventHandler);
 
-    //地图图块加载完毕后执行函数
     function completeEventHandler() {
       marker = new AMap.Marker({
         map: map,
-        position: new AMap.LngLat(dataS[0].lng, dataS[0].lat), //基点位置
-        icon: "http://code.mapabc.com/images/car_03.png", //marker图标，直接传递地址url
-        offset: new AMap.Pixel(-26, -13), //相对于基点的位置
+        position: new AMap.LngLat(dataS[0].lng, dataS[0].lat),
+        icon: "http://7vijjg.com1.z0.glb.clouddn.com/move.jpg",
+        offset: new AMap.Pixel(-26, -13),
         autoRotation: true
+      });
+
+      $('.tip input:first-child').on('click', function() {
+        marker.moveAlong(lineArr, 2000);
+      });
+      $('.tip input:last-child').on('click', function() {
+        marker.stopMove();
       });
 
       lineArr = new Array();
       var pathLen = dataS.length;
       for (var i = 0; i < pathLen; i++) {
-        lineArr.push(new AMap.LngLat(dataS[i].lng, dataS[i].lat));
+          lineArr.push(new AMap.LngLat(dataS[i].lng, dataS[i].lat));
       }
 
-      //绘制轨迹
+      for(var i = 0; i < pathLen; i++) {
+        addMaker(map, dataS, i);
+      }
+
       var polyline = new AMap.Polyline({
         map: map,
         path: lineArr,
-        strokeColor: "#00A", //线颜色
-        strokeOpacity: 1, //线透明度
-        strokeWeight: 3, //线宽
-        strokeStyle: "solid" //线样式
+        strokeColor: "#00a",
+        strokeOpacity: 1,
+        strokeWeight: 2,
+        strokeStyle: "solid"
       });
 
       map.setFitView();
-
-      marker.moveAlong(lineArr, 2000);
     }
+  }
+
+  function addMaker(map, data, i) {
+    var markerNew = new AMap.Marker({
+      map: map,
+      position: new AMap.LngLat(data[i].lng, data[i].lat),
+      icon: "http://7vijjg.com1.z0.glb.clouddn.com/marker.png",
+      title: data[i].name
+    });
   }
 
   // comments
@@ -300,7 +318,7 @@ $(function() {
     $iw_thumbs.append(li);
   }
 
-  ImageWall	= (function() {
+  var ImageWall	= (function() {
       var w_dim,
         current = -1,
         isRibbonShown = false,

@@ -171,7 +171,7 @@ html, body {
 #fp-nav ul li .fp-tooltip,
 .fp-slidesNav ul li .fp-tooltip {
     position: absolute;
-    color: #fff;
+    color: #555;
     font-size: 14px;
     font-family: arial, helvetica, sans-serif;
     white-space: nowrap;
@@ -281,12 +281,11 @@ html, body {
 
 // section2 map style begin
 .slide {
+  color: #fff;
 
   .date {
-    font-size: 4em;
-  }
-
-  .description {
+    font-size: 3em;
+    text-align: center;
   }
 
   .mapContainer {
@@ -296,9 +295,47 @@ html, body {
     height: -moz-calc(100% - 20em);
     height: calc(100% - 20em);
     margin: 20px auto;
-    background: #fff;
-    text-align: center;
   }
+}
+
+.sliderwrapper {
+  width: 95%;
+  height: -webkit-calc(100% - 5em);
+  height: -moz-calc(100% - 5em);
+  height: calc(100% - 5em);
+  position: relative;
+  margin: 70px auto 20px;
+}
+
+.tip{
+  height:45px;
+  background-color:#fff;
+  padding-left:10px;
+  padding-right:10px;
+  border:1px solid #969696;
+  position:absolute;
+  font-size:12px;
+  right:10px;
+  bottom:30px;
+  border-radius:3px;
+  line-height:45px;
+}
+
+.tip input[type='button']{
+  height:28px;
+  line-height:28px;
+  outline:none;
+  text-align:center;
+  padding-left:5px;
+  padding-right:5px;
+  color:#FFF;
+  background-color:#0D9BF2;
+  border:0;
+  border-radius: 3px;
+  margin-top:8px;
+  margin-left:5px;
+  cursor:pointer;
+  margin-right:10px;
 }
 // section2 map style end
 
@@ -318,13 +355,11 @@ html, body {
 header h1{
 	margin: 10px 0 0 20px;
 	font-size: 60px;
-	text-transform: uppercase;
 	text-shadow: 0px 0px 1px #fff;
 	color: #444;
 }
 header span{
-	font-style: italic;
-	margin: -10px 0 10px 188px;
+	margin: -6px 0 12px 188px;
 	display: block;
 	color: #555;
 	text-shadow: 1px 1px 1px #fff;
@@ -339,23 +374,17 @@ ul.iw_thumbs li{
 	margin:5px;
 }
 ul.iw_thumbs li div{
-	position:absolute;
-	top:5px;
-	width:180px;
-	padding:0px 10px;
-	display:none;
-	color:#fff;
-	z-index:100;
-}
-ul.iw_thumbs li div h2{
-	font-size:38px;
-	text-transform:uppercase;
-	text-shadow:0px 0px 1px #fff;
+	position: absolute;
+	top: 5px;
+	width: 180px;
+	padding: 0px 10px;
+	display: none;
+	color: #fff;
+	z-index: 100;
 }
 ul.iw_thumbs li div p{
-	font-size:11px;
-	line-height:16px;
-	font-style:italic;
+	font-size: 1.8em;
+	line-height: 2;
 }
 ul.iw_thumbs li:nth-child(1){
 	margin-left:50px;
