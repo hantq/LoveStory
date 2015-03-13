@@ -250,13 +250,6 @@ $(function() {
         autoRotation: true
       });
 
-      $('.tip input:first-child').on('click', function() {
-        marker.moveAlong(lineArr, 2000);
-      });
-      $('.tip input:last-child').on('click', function() {
-        marker.stopMove();
-      });
-
       lineArr = new Array();
       var pathLen = dataS.length;
       for (var i = 0; i < pathLen; i++) {
@@ -277,6 +270,16 @@ $(function() {
       });
 
       map.setFitView();
+
+      (function(marker, index, lineArr) {
+        $('#slide' + index + ' input:first-child').on('click', function() {
+          marker.moveAlong(lineArr, 2000);
+        });
+
+        $('#slide' + index + ' input:last-child').on('click', function() {
+          marker.stopMove();
+        });
+      })(marker, index, lineArr);
     }
   }
 
