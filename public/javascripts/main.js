@@ -205,7 +205,7 @@ $(function() {
   var mapData;
   $.ajax({
     type: 'get',
-    url: 'http://localhost:3000/javascripts/travel.json',
+    url: 'http://localhost:3000/data/travel.json',
     success: function(res) {
       mapData = res;
       console.log(mapData);
@@ -263,9 +263,6 @@ $(function() {
     }
   }
 
-
-
-
   // comments
   (function() {
 		var ds = document.createElement('script');
@@ -275,6 +272,9 @@ $(function() {
 		(document.getElementsByTagName('head')[0]
 		 || document.getElementsByTagName('body')[0]).appendChild(ds);
 	})();
+
+  // image wall
+
 
 
 });
