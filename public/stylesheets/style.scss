@@ -8,6 +8,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow:hidden;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
     /*Avoid flicker on slides transitions for mobile phones #336 */
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -72,13 +73,21 @@ html, body {
     transform: translate3d(0,0,0);
 }
 .fp-controlArrow.fp-prev {
+<<<<<<< HEAD
     left: 35px;
+=======
+    left: 45px;
+>>>>>>> d26f0ddd896131037c8a2ac858c2feebb95c123f
     width: 0;
     border-width: 38.5px 34px 38.5px 0;
     border-color: transparent #fff transparent transparent;
 }
 .fp-controlArrow.fp-next {
+<<<<<<< HEAD
     right: 35px;
+=======
+    right: 45px;
+>>>>>>> d26f0ddd896131037c8a2ac858c2feebb95c123f
     border-width: 38.5px 0 38.5px 34px;
     border-color: transparent transparent transparent #fff;
 }
@@ -170,7 +179,7 @@ html, body {
 #fp-nav ul li .fp-tooltip,
 .fp-slidesNav ul li .fp-tooltip {
     position: absolute;
-    color: #fff;
+    color: #555;
     font-size: 14px;
     font-family: arial, helvetica, sans-serif;
     white-space: nowrap;
@@ -268,13 +277,6 @@ html, body {
 // loading style end
 
 
-// common style begin
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-// common style end
-
-
 // section1 timer style begin
 #section1 p {
   color: #fff;
@@ -287,24 +289,61 @@ body {
 
 // section2 map style begin
 .slide {
+  color: #fff;
 
   .date {
-    font-size: 4em;
+    font-size: 3em;
+    text-align: center;
   }
 
-  .description {
-  }
-
-  #mapContainer {
+  .mapContainer {
     width: 60%;
     min-width: 300px;
     height: -webkit-calc(100% - 20em);
     height: -moz-calc(100% - 20em);
     height: calc(100% - 20em);
     margin: 20px auto;
-    background: #fff;
-    text-align: center;
   }
+}
+
+.sliderwrapper {
+  width: 95%;
+  height: -webkit-calc(100% - 5em);
+  height: -moz-calc(100% - 5em);
+  height: calc(100% - 5em);
+  position: relative;
+  margin: 70px auto 20px;
+}
+
+.tip{
+  height:45px;
+  background-color:#fff;
+  padding-left:10px;
+  padding-right:10px;
+  border:1px solid #969696;
+  position:absolute;
+  font-size:12px;
+  right:10px;
+  bottom:30px;
+  border-radius:3px;
+  line-height:45px;
+}
+
+.tip input[type='button']{
+  height:28px;
+  line-height:28px;
+  outline:none;
+  text-align:center;
+  padding-left:5px;
+  padding-right:5px;
+  color:#FFF;
+  background-color:#0D9BF2;
+  border:0;
+  border-radius: 3px;
+  margin-top:8px;
+  margin-left:5px;
+  cursor:pointer;
+  margin-right:10px;
 }
 // section2 map style end
 
@@ -324,13 +363,11 @@ body {
 header h1{
 	margin: 10px 0 0 20px;
 	font-size: 60px;
-	text-transform: uppercase;
 	text-shadow: 0px 0px 1px #fff;
 	color: #444;
 }
 header span{
-	font-style: italic;
-	margin: -10px 0 10px 188px;
+	margin: -6px 0 12px 188px;
 	display: block;
 	color: #555;
 	text-shadow: 1px 1px 1px #fff;
@@ -345,23 +382,17 @@ ul.iw_thumbs li{
 	margin:5px;
 }
 ul.iw_thumbs li div{
-	position:absolute;
-	top:5px;
-	width:180px;
-	padding:0px 10px;
-	display:none;
-	color:#fff;
-	z-index:100;
-}
-ul.iw_thumbs li div h2{
-	font-size:38px;
-	text-transform:uppercase;
-	text-shadow:0px 0px 1px #fff;
+	position: absolute;
+	top: 5px;
+	width: 180px;
+	padding: 0px 10px;
+	display: none;
+	color: #fff;
+	z-index: 100;
 }
 ul.iw_thumbs li div p{
-	font-size:11px;
-	line-height:16px;
-	font-style:italic;
+	font-size: 1.8em;
+	line-height: 2;
 }
 ul.iw_thumbs li:nth-child(1){
 	margin-left:50px;
