@@ -12,26 +12,18 @@ var gulp = require('gulp'),
     server = lr();
 
 gulp.task('styles', function() {
-  gulp.src('./public/stylesheets/*.scss')
-    .pipe(sass({
-      style: 'expanded',
-      compass: true,
-      lineNumbers: true
-    }))
-    .pipe(rename({ suffix: '.min'}))
-    .pipe(minifycss())
-    .pipe(livereload(server))
-    .pipe(gulp.dest('dist/styles'))
+  return gulp.src('./public/stylesheets/style.css')
+    .pipe(minifyCss())
+    .pipe(rename('style.min.css'))
+    .pipe(gulp.dest('./public/stylesheets'))
     .pipe(notify({ message: 'styles task complete.'}));
 });
 
 gulp.task('scripts', function() {
-  gulp.src('./public/javascripts/main.js')
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
+  return gulp.src('./public/javascripts/main.js')
     .pipe(uglify())
-    .pipe(concat('app.min.js'))
-    .pipe(gulp.dest('dist/scripts'))
+    .pipe(rename('app.min.js'))
+    .pipe(gulp.dest('./public/javascripts'))
     .pipe(notify({ message: 'scripts task complete.'}));
 });
 
@@ -40,7 +32,7 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
-gulp.task('defalut', function() {
+gulp.task('default', function() {
   gulp.run('styles', 'scripts');
 });
 
