@@ -58,6 +58,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /*Avoid flicker on slides transitions for mobile phones #336 */
   -webkit-tap-highlight-color: transparent;
 }
@@ -132,14 +133,14 @@ html, body {
 }
 
 .fp-controlArrow.fp-prev {
-  left: 15px;
+  left: 45px;
   width: 0;
   border-width: 38.5px 34px 38.5px 0;
   border-color: transparent #fff transparent transparent;
 }
 
 .fp-controlArrow.fp-next {
-  right: 15px;
+  right: 45px;
   border-width: 38.5px 0 38.5px 34px;
   border-color: transparent transparent transparent #fff;
 }
@@ -349,10 +350,6 @@ html, body {
     -webkit-transform: translateY(-20px);
   }
 }
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 #section1 p {
   color: #fff;
   font-size: 5em;
@@ -363,7 +360,7 @@ body {
 .slide .date {
   font-size: 4em;
 }
-.slide #mapContainer {
+.slide .mapContainer {
   width: 60%;
   min-width: 300px;
   height: -webkit-calc(100% - 20em);

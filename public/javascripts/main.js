@@ -214,24 +214,19 @@ $(function() {
   }
 
   // map
-  var mapData;
-  $.ajax({
-    type: 'get',
-    url: 'http://localhost:3000/data/travel.json',
-    success: function(res) {
-      mapData = res;
-      console.log(mapData);
-    },
-    error: function() {
-      console.log('Ajax access error!');
-    }
-  });
+  var md = mapData.map,
+      mdLen = md.length;
 
-  function drawMap(selected) {
-    var dataS = mapData[selected];
+  for(var j = 0; j < mdLen; j++) {
+    drawMap(md[j], j);
+  }
+
+  function drawMap(data, index) {
+    var dataS = data.path;
+    var dest = "mapContainer" + index;
 
     //初始化地图对象，加载地图
-    var map = new AMap.Map("mapContainer", {
+    var map = new AMap.Map(dest, {
       resizeEnable: true,
       //二维地图显示视口
       view: new AMap.View2D({
@@ -255,7 +250,8 @@ $(function() {
       });
 
       lineArr = new Array();
-      for (var i = 0; i < dataS.length; i++) {
+      var pathLen = dataS.length;
+      for (var i = 0; i < pathLen; i++) {
         lineArr.push(new AMap.LngLat(dataS[i].lng, dataS[i].lat));
       }
 
@@ -289,7 +285,20 @@ $(function() {
   var $iw_thumbs = $('#iw_thumbs'),
       $iw_ribbon = $('#iw_ribbon'),
       $iw_ribbon_close = $iw_ribbon.children('span.iw_close'),
-      $iw_ribbon_zoom = $iw_ribbon.children('span.iw_zoom');
+      $iw_ribbon_zoom = $iw_ribbon.children('span.iw_zoom')
+      phd = photoData.photo,
+      phLen = phd.length;
+
+  for(var i = 0; i < phLen; i++) {
+    addPhotoData(i);
+  }
+
+  function addPhotoData(i) {
+    var li = '<li><img src="' + phd[i].small + '", data-img="' + phd[i].large + '", alt="' + phd[i].description + '">';
+    li += '<div><p>' + phd[i].description + '</p></div>';
+    li += '</li>';
+    $iw_thumbs.append(li);
+  }
 
   ImageWall	= (function() {
       var w_dim,
