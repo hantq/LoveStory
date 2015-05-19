@@ -15,7 +15,6 @@ gulp.task('styles', function() {
     .pipe(rename({suffix: '.min'}))
     .pipe(minifyCss())
     .pipe(gulp.dest('public/dist'))
-    .pipe(livereload())
     .pipe(notify({message: 'Styles task complete'}));
 });
 
@@ -25,7 +24,6 @@ gulp.task('scripts', function() {
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(gulp.dest('public/dist'))
-    .pipe(livereload())
     .pipe(notify({ message: 'Scripts task complete'}));
 });
 
@@ -39,7 +37,10 @@ gulp.task('default', function() {
 });
 
 gulp.task('watch', function() {
-  livereload.listen();
   gulp.watch('public/stylesheets/sass/style.scss', ['styles']);
   gulp.watch('public/javascripts/*.js', ['scripts']);
+
+  livereload.listen();
+
+  gulp.watch(['public/dist/**']).on('change', livereload.changed);
 });
