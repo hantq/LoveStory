@@ -1,57 +1,45 @@
-var gulp = require('gulp'),
-    uglify = require('gulp-uglify'),
-    concat = require('gulp-concat'),
+var autoprefixer = require('gulp-autoprefixer'),
     clean = require('gulp-clean'),
-    jshint = require('gulp-jshint'),
+    concat = require('gulp-concat'),
+    gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     minifyCss = require('gulp-minify-css'),
-    sass = require('gulp-ruby-sass'),
-    rename = require('gulp-rename'),
     notify = require('gulp-notify'),
-    lr = require('tiny-lr'),
-    server = lr();
+    rename = require('gulp-rename'),
+    sass = require('gulp-ruby-sass'),
+    uglify = require('gulp-uglify')
 
 gulp.task('styles', function() {
-  return gulp.src('./public/stylesheets/style.css')
+  return sass('public/stylesheets/sass/style.scss', {style: 'expanded', compass: true})
+    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+    .pipe(rename({suffix: '.min'}))
     .pipe(minifyCss())
-    .pipe(rename('style.min.css'))
-    .pipe(gulp.dest('./public/stylesheets'))
-    .pipe(notify({ message: 'styles task complete.'}));
+    .pipe(gulp.dest('public/dist'))
+    .pipe(livereload())
+    .pipe(notify({message: 'Styles task complete'}));
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('./public/javascripts/main.js')
+  return gulp.src('public/javascripts/*.js')
+    .pipe(concat('main.js'))
+    .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(rename('app.min.js'))
-    .pipe(gulp.dest('./public/javascripts'))
-    .pipe(notify({ message: 'scripts task complete.'}));
+    .pipe(gulp.dest('public/dist'))
+    .pipe(livereload())
+    .pipe(notify({ message: 'Scripts task complete'}));
 });
 
 gulp.task('clean', function() {
-  gulp.src(['dist/styles', 'dist/scripts'], {read: false})
+  return gulp.src(['public/dist'], {read: false})
     .pipe(clean());
 });
 
 gulp.task('default', function() {
-  gulp.run('styles', 'scripts');
+  gulp.run('clean', 'styles', 'scripts', 'watch');
 });
 
 gulp.task('watch', function() {
-  server.listen(3000, function(err) {
-    if (err) {
-      return console.log(err);
-    };
-
-    // Watch .scss files
-    gulp.watch('./public/stylesheets/*.scss', function(event) {
-      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-      gulp.run('styles');
-    });
-
-    // Watch .js files
-    gulp.watch('./public/javascripts/*.js', function(event) {
-      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-      gulp.run('scripts');
-    });
-  });
+  livereload.listen();
+  gulp.watch('public/stylesheets/sass/style.scss', ['styles']);
+  gulp.watch('public/javascripts/*.js', ['scripts']);
 });
