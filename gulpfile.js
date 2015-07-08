@@ -32,10 +32,6 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
-gulp.task('default', function() {
-  gulp.run('clean', 'styles', 'scripts', 'watch');
-});
-
 gulp.task('watch', function() {
   gulp.watch('public/stylesheets/sass/style.scss', ['styles']);
   gulp.watch('public/javascripts/*.js', ['scripts']);
@@ -44,3 +40,5 @@ gulp.task('watch', function() {
 
   gulp.watch(['public/dist/**']).on('change', livereload.changed);
 });
+
+gulp.task('default', ['clean', 'styles', 'scripts', 'watch']);
